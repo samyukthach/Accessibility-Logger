@@ -1,0 +1,299 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f4f4f9;
+  color: #333;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #5b1f80;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  color: #777;
+}
+
+/* Form Section */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.issue-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #5b1f80;
+}
+
+.issue-form input,
+.issue-form select,
+.issue-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.issue-form input[type="text"] {
+  background-color: #f9f9f9;
+}
+
+.issue-form select {
+  background-color: #fff;
+}
+
+.issue-form textarea {
+  background-color: #fff;
+}
+
+.issue-form button {
+  background-color: #5b1f80;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.issue-form button:hover {
+  background-color: #4a1866; /* Darker purple on hover */
+}
+
+/* Issue Log Table Section */
+.issue-log {
+  margin-top: 20px;
+}
+
+.issue-log h2 {
+  font-size: 1.8rem;
+  color: #5b1f80;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.issue-log button {
+  background-color: #5b1f80;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  display: block;
+  width: 100%;
+}
+
+.issue-log button:hover {
+  background-color: #4a1866;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #5b1f80;
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f1e5f6;
+}
+
+table td button {
+  background-color: #f44336;
+  color: white;
+  padding: 5px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+table td button:hover {
+  background-color: #d32f2f;
+}
+
+/* Project Section */
+#projectTables {
+  margin-top: 40px;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5b1f80;
+  color: white;
+  padding: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.project-header:hover {
+  background-color: #4a1866; /* Darker purple on hover */
+}
+
+.project-header span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.project-header button {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.project-header button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+.project-header .chevron {
+  font-size: 1.5rem;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Collapsible Content */
+.content {
+  display: none;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f9f9f9;  /* Light background for content */
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Chevron animation for expand/collapse */
+.chevron.collapsed {
+  transform: rotate(-90deg); /* Rotate the chevron when collapsed */
+}
+
+/* Collapsible Button Styling */
+.collapsible {
+  background-color: #5b1f80;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 40%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.collapsible:hover {
+  background-color: #4a1866; /* Darker purple on hover */
+}
+
+.collapsible .chevron {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.collapsible.active .chevron {
+  transform: rotate(90deg); /* Rotate chevron when content is expanded */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .issue-form input,
+  .issue-form select,
+  .issue-form textarea {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .issue-form button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  table th, table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  table td button {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+
+  .collapsible {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+}
+
+/* Chevron Icon - Before */
+.collapsible::before {
+  content: '\f054'; /* Unicode for 'chevron-right' from FontAwesome */
+  font-family: 'FontAwesome';
+  font-size: 1.5rem;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* When the collapsible content is expanded, change the chevron to down icon */
+.collapsible.expanded::before {
+ content: '\f078'; /* Unicode for 'chevron-down' from FontAwesome */
+  transform: rotate(180deg); /* Rotate the icon when expanded */
+}
+
+/* Custom icon size */
+.chevron-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}

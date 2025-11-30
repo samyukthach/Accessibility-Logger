@@ -1,0 +1,14 @@
+[
+  { "issueType": "Missing alt text", "impact": "critical", "wcag": "1.1.1", "level": "A", "principle": "Perceivable", "recommendation": "Add descriptive alt attributes to all images." },
+  { "issueType": "Color alone conveys meaning", "impact": "serious", "wcag": "1.4.1", "level": "A", "principle": "Perceivable", "recommendation": "Do not use color as the only means of conveying information." },
+  { "issueType": "Insufficient contrast", "impact": "serious", "wcag": "1.4.3", "level": "AA", "principle": "Perceivable", "recommendation": "Ensure text and background have a contrast ratio of at least 4.5:1." },
+  { "issueType": "Keyboard trap", "impact": "critical", "wcag": "2.1.2", "level": "A", "principle": "Operable", "recommendation": "Ensure users can move focus away from components using keyboard." },
+  { "issueType": "No skip link", "impact": "moderate", "wcag": "2.4.1", "level": "A", "principle": "Operable", "recommendation": "Provide a skip link to allow bypassing repetitive content." },
+  { "issueType": "Links are ambiguous", "impact": "moderate", "wcag": "2.4.4", "level": "A", "principle": "Operable", "recommendation": "Provide context for all links so destination is clear." },
+  { "issueType": "Focus not obscured", "impact": "moderate", "wcag": "2.4.11", "level": "AA", "principle": "Operable", "recommendation": "Ensure focused elements are not hidden behind sticky UI." },
+  { "issueType": "Dragging only controls", "impact": "serious", "wcag": "2.5.7", "level": "AA", "principle": "Operable", "recommendation": "Ensure controls that require dragging offer simple pointer alternatives." },
+  { "issueType": "Target size too small", "impact": "moderate", "wcag": "2.5.8", "level": "AAA", "principle": "Operable", "recommendation": "Ensure touch targets are at least 24 by 24 CSS pixels." },
+  { "issueType": "Missing form label", "impact": "critical", "wcag": "3.3.2", "level": "A", "principle": "Understandable", "recommendation": "Add <label> elements linked to their corresponding inputs." },
+  { "issueType": "No language attribute", "impact": "moderate", "wcag": "3.1.1", "level": "A", "principle": "Understandable", "recommendation": "Add a lang attribute to the <html> tag." },
+  { "issueType": "Name/role missing in controls", "impact": "critical", "wcag": "4.1.2", "level": "A", "principle": "Robust", "recommendation": "Ensure custom controls expose name, role, and value." }
+]
