@@ -1,11 +1,14 @@
-# Accessibility Logger
+# Accessibility-Logger
+**A developer-friendly tool to log and track accessibility issues.**
 
+## Overview
 A free tool to log accessibility issues in web applications, helping developers, designers, and accessibility advocates ensure inclusive digital experiences.
 
 ## Features
 - **Manual logging** for issues found during human testing or assistive technology testing
 - **Compliance mapping** to WCAG 2.2 A/AA standards
 - **Reports** in CSV for easy integration with issue trackers
+-  **Open source & collaborative**
 
 ## Installation
 ```bash
