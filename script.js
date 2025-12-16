@@ -38,14 +38,14 @@ function populateIssueOptions() {
 
   // Filter and add issue types to the dropdown
   issueCatalog.filter(issue => {
-    return (principle === 'all' || issue.principle === principle) &&
-           (level === 'all' || issue.level === level);
-  }).forEach(issue => {
-    const option = document.createElement("option");
-    option.value = issue.issueType;
-    option.textContent = `${issue.issueType} (${issue.wcag})`;
-    issueTypeSelect.appendChild(option);
-  });
+      return (principle === 'all' || issue.principle === principle) &&
+        (level === 'all' || issue.level === level);
+    }).forEach(issue => {
+      const option = document.createElement("option");
+      option.value = issue.issueType;
+      option.textContent = `${issue.issueType} (${issue.wcag})`;
+      issueTypeSelect.appendChild(option);
+    });
 
   updateRecommendation(); // Update recommendation text area based on selected issue
 }
@@ -97,8 +97,7 @@ function logIssue() {
   savedIssues.push(issue);
   localStorage.setItem('a11yIssues', JSON.stringify(savedIssues));
 
-  // Add the issue to the project-wise table immediately
-  appendIssueToTable(issue);
+  // (no direct append here — renderTablesByProject will add the new issue)
 
   // Clear input fields after logging
   document.getElementById("title").value = "";
@@ -111,11 +110,15 @@ function logIssue() {
 
   // Update project input field with the newly added project
   updateProjectInputField();
+
+  showToast();
 }
 
 // Append issue to the table (for a specific project)
 function appendIssueToTable(issue, table) {
   const row = document.createElement("tr");
+  // add data attribute so deleteIssue can find the row
+  row.dataset.issueTitle = issue.title;
   row.innerHTML = `
     <td><input type="checkbox" class="issue-checkbox" data-issue-title="${issue.title}"></td>
     <td>${issue.title}</td>
@@ -179,10 +182,10 @@ function renderTablesByProject() {
     deleteProjectBtn.onclick = () => deleteProject(project);
     container.appendChild(deleteProjectBtn);
 
-    // Toggle visibility of issues table 
+    // Toggle visibility of issues table
     projectHeader.addEventListener("click", () => {
       tableDiv.style.display = tableDiv.style.display === "none" ? "block" : "none";
-     projectHeader.classList.toggle('expanded');  // Toggle the expanded class
+      projectHeader.classList.toggle('expanded');  // Toggle the expanded class
 
     });
 
@@ -201,7 +204,8 @@ function updateProjectInputField() {
   const projectInput = document.getElementById("project");
   const projectDatalist = document.getElementById("projects-list");
 
-  projectInput.innerHTML = ""; // Clear the existing options
+  // don't clear projectInput.innerHTML (it's an <input>), clear datalist options instead
+  projectDatalist.innerHTML = "";
 
   // Add the projects to the input field dropdown
   projects.forEach(project => {
@@ -237,10 +241,10 @@ function deleteIssue(title) {
 // Delete all selected issues
 function deleteSelectedIssues() {
   let savedIssues = JSON.parse(localStorage.getItem('a11yIssues')) || [];
-  
+
   // Get all selected checkboxes
   const selectedCheckboxes = document.querySelectorAll('.issue-checkbox:checked');
-  
+
   const selectedTitles = Array.from(selectedCheckboxes).map(checkbox => checkbox.dataset.issueTitle);
 
   // Filter out the selected issues to delete
@@ -273,16 +277,18 @@ function clearLogs() {
 
 
 // Handle "Select All" checkbox
-document.getElementById("select-all").addEventListener("change", (e) => {
-  const checkboxes = document.querySelectorAll('.issue-checkbox');
-  checkboxes.forEach(checkbox => checkbox.checked = e.target.checked);
-});
-
+const selectAll = document.getElementById("select-all");
+if (selectAll) {
+  selectAll.addEventListener("change", (e) => {
+    const checkboxes = document.querySelectorAll(".issue-checkbox");
+    checkboxes.forEach(checkbox => (checkbox.checked = e.target.checked));
+  });
+}
 
 // Export selected issues to CSV
 function exportCSV() {
   const selectedCheckboxes = document.querySelectorAll('.issue-checkbox:checked');
-  
+
   // If no issues are selected, alert the user
   if (selectedCheckboxes.length === 0) {
     alert("Please select at least one issue to export.");
@@ -307,7 +313,7 @@ function exportCSV() {
 
   // Define CSV header row
   const header = ["Title", "Priority", "Issue Type", "Impact", "WCAG Ref", "Recommendation", "Description", "Screenshot"];
-  
+
   // Convert selected issues into rows for CSV
   const rows = selectedIssues.map(issue => [
     issue.title,
@@ -341,4 +347,16 @@ function exportCSV() {
     link.download = filename;
     link.click();  // Trigger the download
   }
+}
+
+function showToast() {
+  const toast = document.getElementById("toast-notification");
+
+  // Add the 'show' class to make the toast visible (CSS opacity: 1)
+  toast.classList.add("show");
+
+  // Set a timeout to remove the 'show' class after 3000 milliseconds (3 seconds)
+  setTimeout(function () {
+    toast.classList.remove("show");
+  }, 3000);
 }
